@@ -1,7 +1,7 @@
 {%extend 'base.html'%}
 {%load static%}
 {%block corp%}
-<form method="post" action="{% url '/utilisateur/registerer' %}"  enctype="multipart/form-data">
+<form method="post" action="{% url '/utilisateur/registerer' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="valider"/>
