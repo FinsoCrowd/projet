@@ -2,8 +2,9 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
-from projet.models import Projet
+from projet.models import Projet,Categorie
 from django.contrib.auth.models import User
+from .form  import CategorieForm
 
 # Create your views here.
 
@@ -27,3 +28,20 @@ def valider(request):
 	projet=Projet.objects.filter(statut=1).select_related()
 	#user = User.objects.create_user('abdoul', 'lennon@thebeatles.com', 'passer')
 	return render(request, 'admin/valider.html',locals())
+
+def categorie(request):
+
+    if request.method=="POST":
+        form=CategorieForm(request.POST)
+        if form.is_valid():
+            
+            categorie = Categorie(nom=form.cleaned_data["nom"],description=form.cleaned_data["description"])
+            categorie.save()
+            form=CategorieForm()
+            return render(request,'admin/categorie.html',locals())
+        else:
+            form=CategorieForm()
+            return render(request,'admin/categorie.html',locals())
+    else:
+        form=CategorieForm()
+        return render(request,'admin/categorie.html',locals())

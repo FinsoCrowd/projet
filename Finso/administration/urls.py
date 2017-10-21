@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^modifier/(?P<id>\d+)', views.modifier, name='modifier'),
     url(r'^supprimer/(?P<id>\d+)', views.supprimer, name='supprimer'),
     url(r'^valider', views.valider, name='valider'),
+    url(r'^categorie', views.categorie, name='categorie'),
 ]
