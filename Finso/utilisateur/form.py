@@ -2,12 +2,23 @@ from django import forms
 
 from .models import utilisateur
 
-class UtilisateurForm(forms.ModelForm):
-      
+from django.contrib.auth.models import User
+
+
+class UserForm(forms.ModelForm):
+      def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+
       class Meta:
-          model = utilisateur
-          fields=('username','email','password','siteweb','adresse','tel','typ')
+            model = User
+            fields=('username','email','password')
+
+class UtilisateurForm(UserForm):
       
+      class Meta(UserForm.Meta):
+          model = utilisateur
+          fields=('siteweb','adresse','tel','typ')
+
 
 
 class ConnexionForm(forms.Form):

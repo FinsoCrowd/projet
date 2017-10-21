@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class utilisateur(User):
+class utilisateur(models.Model):
+    user=models.OneToOneField(User,unique="true")
     adresse=models.CharField(max_length=255)
     siteweb=models.CharField(max_length=255)
     typ=models.CharField(max_length=255)

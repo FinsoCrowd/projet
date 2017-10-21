@@ -4,6 +4,7 @@
 <form method="post" action="{% url '/utilisateur/registerer' %}"  enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    {{ formU.as_p }}
     <input type="submit" value="valider"/>
 </form>
 {% endblock %}
