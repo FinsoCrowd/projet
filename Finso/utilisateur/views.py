@@ -57,4 +57,41 @@ def deconnexion (request):
     logout(request)
     return redirect('/utilisateur/connexion')
 
+
+
+def update(request):
+    if request.method=="POST":
+        usere=utilisateur.objects.get(user=request.user)
+        form=UserForm(request.POST, instance=request.user)
+        formU=UtilisateurForm(request.POST, instance=usere )
+        if form.is_valid() and formU.is_valid() :
+            #usere = User.objects.create_user(form.cleaned_data["username"],form.cleaned_data["email"],form.cleaned_data["password"] )
+            #utilisateure = utilisateur(user=usere,adresse=formU.cleaned_data["adresse"], siteweb=formU.cleaned_data["siteweb"], typ=formU.cleaned_data["typ"], tel=formU.cleaned_data["tel"])
+            #utilisateure.save()
+            #form=UserForm()
+            #formU=UtilisateurForm()
+            form.save()
+            formU.save()
+            form=UserForm()
+            formU=UtilisateurForm()
+            return render(request,'utilisateur/update.html',locals())
+        else:
+            form=UserForm()
+            formU=UtilisateurForm()
+            return render(request,'utilisateur/update.html',locals())
+
+
+    
+    else:
+         usere=utilisateur.objects.get(user=request.user)
+         print (usere.adresse)
+         form=UserForm(request.POST or None,instance=request.user)
+         formU=UtilisateurForm(request.POST or None,instance=usere)
+         return render(request, 'utilisateur/update.html',locals())
+
+
+
+
+
+
 # Create your views here.
