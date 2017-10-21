@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'utilisateur',
-    'projet'
+    'projet',
+    'administration'
 ]
 
 MIDDLEWARE = [
@@ -79,10 +80,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'finsodb',
-        'USER': 'finso',
-        'PASSWORD': 'finso',
+        'USER': 'root',
+        'PASSWORD': 'passer',
         'HOST':'127.0.0.1',
-        'PORT':'8889',
+        'PORT':'3306',
     }
 }
 

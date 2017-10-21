@@ -20,6 +20,7 @@ class Projet(models.Model):
     nom=models.CharField(max_length=255)
     description=models.TextField()
     Montant=models.DecimalField(max_digits=19, decimal_places=2)
+    statut=models.CharField(max_length=255,default=0)
     date_debut=models.DateField()
     date_fin=models.DateField()
     id_user = models.ForeignKey(utilisateur, db_column="id_user", on_delete=models.CASCADE)
