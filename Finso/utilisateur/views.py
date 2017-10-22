@@ -43,7 +43,7 @@ def connexion (request):
              user=authenticate(username=username,password=password)
              if user:
                login(request,user)
-               return render(request,'index.html')
+               return render(request,'admin/admin1.html')
              else:
                 error=True
                 form=ConnexionForm()

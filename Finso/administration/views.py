@@ -9,22 +9,27 @@ from .form  import CategorieForm
 # Create your views here.
 
 def detail(request,id):
+	user=request.user
 	projet=Projet.objects.get(id=id)
 	return render(request, 'admin/detail.html',locals())
 
 def home(request):
+	user=request.user
 	projet=Projet.objects.filter(statut=0).select_related()
 	#user = User.objects.create_user('abdoul', 'lennon@thebeatles.com', 'passer')
 	return render(request, 'admin/admin1.html',locals())
 def modifier(request,id):
+	user=request.user
 	Projet.objects.filter(pk=id).update(statut=1)
 	projet=Projet.objects.filter(statut=0).select_related()
 	return redirect('/admin1/home')
 def supprimer(request,id):
+	user=request.user
 	projet=Projet.objects.get(pk=id).delete()
 	#user = User.objects.create_user('abdoul', 'lennon@thebeatles.com', 'passer')
 	return redirect('/admin1/home')
 def valider(request):
+	user=request.user
 	projet=Projet.objects.filter(statut=1).select_related()
 	#user = User.objects.create_user('abdoul', 'lennon@thebeatles.com', 'passer')
 	return render(request, 'admin/valider.html',locals())
@@ -33,6 +38,7 @@ def categorie(request):
 
     if request.method=="POST":
         form=CategorieForm(request.POST)
+        user=request.user
         if form.is_valid():
             
             categorie = Categorie(nom=form.cleaned_data["nom"],description=form.cleaned_data["description"])
@@ -44,4 +50,5 @@ def categorie(request):
             return render(request,'admin/categorie.html',locals())
     else:
         form=CategorieForm()
+        user=request.user
         return render(request,'admin/categorie.html',locals())
