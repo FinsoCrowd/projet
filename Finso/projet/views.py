@@ -27,8 +27,9 @@ def projet(request):
             #form=ProjetForm()
             numbmedia=media.objects.all().count()
             numbmedia+=numbmedia
-            imgname="/Applications/Img/image"+ str(numbmedia)+".png"
-            medi = media(type='image', url=imgname, id_projet=projet)
+            imgname="/home/ndiaye/Bureau/repository/projet/Finso/static/media/image"+ str(numbmedia)+".png"
+            nom="image"+ str(numbmedia)+".png"
+            medi = media(type='image',nom=nom, url=imgname, id_projet=projet)
             medi.save()
 
             handle_uploaded_file(request.FILES['file'], imgname)
