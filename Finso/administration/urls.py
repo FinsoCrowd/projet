@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^supprimer/(?P<id>\d+)', views.supprimer, name='supprimer'),
     url(r'^valider', views.valider, name='valider'),
     url(r'^categorie', views.categorie, name='categorie'),
+    url(r'^supp/(?P<id>\d+)', views.supp, name='supp'),
+    url(r'^mod/(?P<id>\d+)', views.mod, name='mod'),
 ]

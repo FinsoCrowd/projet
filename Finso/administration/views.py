@@ -45,9 +45,10 @@ def valider(request):
 	projet=Projet.objects.filter(statut=1).select_related()
 	#user = User.objects.create_user('abdoul', 'lennon@thebeatles.com', 'passer')
 	return render(request, 'admin/valider.html',locals())
+
 @login_required
 def categorie(request):
-
+    cat=Categorie.objects.all()
     if request.method=="POST":
         form=CategorieForm(request.POST)
         user=request.user
@@ -64,3 +65,15 @@ def categorie(request):
         form=CategorieForm()
         user=request.user
         return render(request,'admin/categorie.html',locals())
+
+@login_required
+def supp(request,id):
+    cat=Categorie.objects.get(id=id).delete()
+    return redirect('/admin1/categorie')
+
+@login_required
+def mod(request,id):
+    cat=Categorie.objects.all()
+    cat1=Categorie.objects.get(id=id)
+    return redirect('/admin1/categorie')
+    
