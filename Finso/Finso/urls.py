@@ -16,12 +16,19 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import view
+
 
 urlpatterns = [
     url(r'^$', view.home, name="accueil"),
+    url(r'^propos', view.propos, name="propos"),
+    url(r'^projetbycategorie/(?P<id>\d+)', view.projetbycategorie, name='projetbycategorie'),
     url(r'^admin/', admin.site.urls),
     url(r'^utilisateur/', include('utilisateur.urls')),
     url(r'^projet/', include('projet.urls')),
     url(r'^admin1/', include('administration.urls')),
-]
+    url(r'^contribution/', include('contribution.urls', namespace="contribution_projet")),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

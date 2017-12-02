@@ -1,9 +1,33 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block corp%}
+
+<div class="col-md-8">
+<div style="width:50%; margin:auto;" class="marge">
+
+<h3>Soumettre un projet</h3>
 <form method="post" action="{% url 'projet:projet' %}"  enctype="multipart/form-data">
+ 
+    
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="valider"/>
+
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    
+    {% for field in form %}
+    <div class="form-group">
+        {{field.errors}}
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      {{ field.label_tag }}
+        {{field}}
+    </div>
+    {% endfor %}
+    <input type="submit"  class="btn btn-default" value="valider"/>
 </form>
+
+</div>
+</div>
 {% endblock %}

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'utilisateur',
     'projet',
+    'contribution',
+    'clear_cache',
     'administration'
 ]
 
@@ -80,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'finsodb',
-        'USER': 'root',
-        'PASSWORD': 'passer',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'USER': 'finso',
+        'PASSWORD': 'finso',
+        'HOST':'localhost',
+        'PORT':'8889',
     }
 }
 
@@ -121,8 +123,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+#Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = '/Applications/media/'
+MEDIA_URL = '/media/'
+
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/utilisateur/connexion'

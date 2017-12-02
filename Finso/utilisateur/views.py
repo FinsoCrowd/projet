@@ -7,12 +7,13 @@ from django.shortcuts import render,redirect
 from .form import UserForm
 from .form  import UtilisateurForm
 from .form import ConnexionForm
+from projet.models import Categorie
 from django.contrib.auth import authenticate, login, logout
 from .models import utilisateur
 
 
 def register(request):
-
+    categorie=Categorie.objects.all()
     if request.method=="POST":
         form=UserForm(request.POST)
         formU=UtilisateurForm(request.POST)
@@ -35,6 +36,7 @@ def register(request):
 
 def connexion (request):
     error=False
+    categorie=Categorie.objects.all()
     if request.method=="POST":
         form=ConnexionForm(request.POST)
         if form.is_valid():
@@ -43,11 +45,14 @@ def connexion (request):
              user=authenticate(username=username,password=password)
              if user:
                login(request,user)
-               return render(request,'admin/admin1.html')
+               if(user.getIs_superuser()):
+                   return render(request,'admin/admin1.html')
+               else:
+                   return render(request,'admin/admin1.html')
              else:
                 error=True
                 form=ConnexionForm()
-                return render(request,'utilisateur/login.html',locals())
+                return render(request,'projet/projet.html',locals())
     else:
         form=ConnexionForm()
         return render(request,'utilisateur/login.html',locals())

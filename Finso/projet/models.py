@@ -41,4 +41,11 @@ class media(models.Model):
     class Meta:
         db_table = 'media'
 
+class Projet_media(object):
+    def __init__(self, nom, description, montant, url ):
+        self.nom = nom
+        self.description= description
+        self.montant=montant
+        self.url=url
+
 

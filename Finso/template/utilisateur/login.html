@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {%load static%}
 {% block corp%} 
-<div style="width:30%;margin-top: 10%" class="well">
+
+    
+<div class="col-md-8">
+   
+<div style="width:50%; margin:auto;" class="marge">
+
+            <h3>Connexion</h3>
             <form method="post" action="{% url 'utilisateur:connexion'  %}">
                     {% csrf_token %}
                     {% for error in form %}
@@ -20,6 +26,7 @@
                         {{field}}
                     </div>
                     {% endfor %}
+                    <div>
                     <button class="btn btn-primary" style="width:100%">Login</button>
                     </div>
 
@@ -28,4 +35,7 @@
                     {% endif%}
             </form>
 </div>
+
+</div>
+
  {% endblock %}
