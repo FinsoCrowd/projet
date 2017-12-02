@@ -3,8 +3,9 @@
 {%block corp%}
 
 <div class="col-md-8">
-<div style="width:50%;margin-top: 100px; margin:auto;" class="well">
 
+<div style="width:50%; margin:auto;" class="marge">    
+<h3> Financer le projet</h3>
 <form method="post" action="{% url 'contribution_projet:contribute' id %}"  enctype="multipart/form-data">
     {% csrf_token %}
     

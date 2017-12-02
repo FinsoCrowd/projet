@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def projet(request):
-
+    categorie=Categorie.objects.all()
     if request.method=="POST":
         form=ProjetForm(request.POST,request.FILES)
         if form.is_valid():

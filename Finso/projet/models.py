@@ -42,10 +42,11 @@ class media(models.Model):
         db_table = 'media'
 
 class Projet_media(object):
-    def __init__(self, nom, description, montant, url ):
+    def __init__(self, nom, description, montant, url, id ):
         self.nom = nom
         self.description= description
         self.montant=montant
+        self.id=id
         self.url=url
 
 

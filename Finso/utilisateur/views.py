@@ -45,10 +45,10 @@ def connexion (request):
              user=authenticate(username=username,password=password)
              if user:
                login(request,user)
-               if(user.getIs_superuser()):
+               if(user.is_superuser==True):
                    return render(request,'admin/admin1.html')
                else:
-                   return render(request,'admin/admin1.html')
+                   return redirect('/')
              else:
                 error=True
                 form=ConnexionForm()

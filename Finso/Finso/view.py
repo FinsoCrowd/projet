@@ -16,7 +16,7 @@ def home(request):
     for i in projet:
         medi=media.objects.filter(id_projet=i.id).select_related()
         if len(medi)>0:
-             proj=Projet_media(nom=i.nom, description=i.description, montant=i.Montant, url=medi[0].url)
+             proj=Projet_media(nom=i.nom, id=i.id, description=i.description, montant=i.Montant, url=medi[0].url)
              liste_projet.append(proj)
 
     return render(request, 'index.html', locals())
