@@ -4,24 +4,38 @@
 Detail
 {% endblock %}
 {%block corp%}
- <div class="col-lg-12">
-                    <div class="jumbotron">
-                    <p>Montant: {{projet.Montant}}   Date debut: {{projet.date_debut}}   Date Fin: {{projet.date_fin}}</p>
-                        {% for p in m %} 
+<div class="col-lg-8"> 
+<div class="panel panel-green">
+      <div class="panel-heading">
+        <em> Montant:</em> <strong style="margin-left: 0px"> {{projet.Montant}} F</strong> <em style="margin-left: 50px"> Date debut:</em> <strong>{{projet.date_debut}} </strong>  <em style="margin-left: 50px"> Date Fin:</em> <strong> {{projet.date_fin}}</strong>
+      </div>
+      <div class="panel-body">
+       <p class="dv">
+          {{ projet.description }} 
+       </p>
+      </div>                
+</div>
+</div>
+
+<div class="col-lg-4"> 
+<div class="panel panel-green">
+      <div class="panel-heading">
+          Societe:{{ projet.id_user.nom }}
+      </div>
+      <div class="panel-body">
+      {% for p in m %} 
                         <p style="float:left;">
-                         <img src="{%static 'media/'|add:p.nom' %}" width="200" height="200" >
+                         <img src="{%static 'media/'|add:p.nom' %}" width="250" height="250" >
                         </p>
                          {% endfor %}
-                        <p style="margin-left: 10px">{{projet.description}}</p>
-                        
-                        
-                    </div>
-                </div>
-                 <div class="col-lg-12">
-                 <p><a href="{% url 'administration:modifier' projet.id %}" class="btn btn-primary btn-lg" role="button">Valider</a>
-                        <a href="{% url 'administration:supprimer' projet.id %}" class="btn btn-primary btn-lg" role="button">Supprimer</a>
-                        </p>
-                 </div>
+      </div>                
+</div>
+</div>
+ <div class="col-lg-12">
+ <p><a href="{% url 'administration:modifier' projet.id %}" class="btn btn-success btn-lg" role="button">Valider</a>
+        <a href="{% url 'administration:supprimer' projet.id %}" class="btn btn-success btn-lg" role="button">Supprimer</a>
+        </p>
+ </div>
 {% endblock %}
 
             

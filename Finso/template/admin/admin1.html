@@ -6,7 +6,7 @@ Projets
 {%block corp%}
 <div class="col-lg-12">   
         <table width="100%" class="table montable-bordered table-hover table-responsive" style="border: 1px solid #424242;" id="dataTables-example">
-                 <thead class="monentete2">
+                 <thead class="monentete2" >
                     <tr>
                         <th>Nom</th>
                         <th>Catégorie</th>
@@ -24,8 +24,8 @@ Projets
                         <td style="vertical-align: middle;">{{p.date_debut}}</td>
                         <td style="vertical-align: middle;">{{p.date_fin}}</td> 
                         <td style="vertical-align: middle;">{{p.Montant}}</td> 
-                        <td  style="vertical-align: middle; background:#F4EEEE;"> <center> <a href="{% url 'administration:detail' p.id  %}"><span class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></span></a>
-                        <a href="{% url 'administration:supprimer' p.id %}"><span class="btn btn-success"><span class="glyphicon glyphicon-remove"></span></span></td></a>  </center> 
+                        <td  style="vertical-align: middle; background:#F4EEEE;"> <center> <a href="{% url 'administration:detail' p.id  %}"><span class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></span></a>
+                        <a href="{% url 'administration:supprimer' p.id %}"><span class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></span></td></a>  </center> 
                      </tr>
                     {% endfor %}
                 </tbody>

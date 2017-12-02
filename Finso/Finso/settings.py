@@ -78,14 +78,15 @@ WSGI_APPLICATION = 'Finso.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'finsodb',
-        'USER': 'finso',
-        'PASSWORD': 'finso',
-        'HOST':'localhost',
-        'PORT':'8889',
+        'USER': 'root',
+        'PASSWORD': 'passer',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
     }
 }
 

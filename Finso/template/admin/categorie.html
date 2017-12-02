@@ -18,52 +18,46 @@ Les categoriés
                       <tr>
                         <td style="vertical-align: middle;">{{ p.nom }}</td>
                         <td style="vertical-align: middle;">{{ p.description }}</td>
-                        <td  style="vertical-align: middle; background:#F4EEEE;"> <center> <a href="{% url 'administration:mod' p.id  %}"><span class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></span></a>
-                        <a href="{% url 'administration:supp' p.id  %}"><span class="btn btn-success"><span class="glyphicon glyphicon-remove"></span></span></td></a>  </center> 
+                        <td  style="vertical-align: middle; background:#F4EEEE;"> <center> <a href="{% url 'administration:mod' p.id  %}"><span class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></span></a>
+                        <a href="{% url 'administration:supp' p.id  %}"><span class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></span></td></a>  </center> 
                      </tr>
                    {% endfor %}
                 </tbody>
         </table>
 </div>
- <div class="col-lg-4">  
+<div class="col-lg-4">  
+<div class="panel panel-default">
+      <div class="panel-heading">
+          Ajouter une categorie
+      </div>
+      <div class="panel-body">
+         <center>
+        <form method="post" action="{% url 'administration:categorie' %}" >
 
-<div class="panel panel-green">
-                        <div class="panel-heading">
-                            Ajouter une categorie
-                        </div>
-                        <div class="panel-body">
-                           <center>
-                          <form method="post" action="{% url 'administration:categorie' %}" >
+          {%csrf_token%}
+          {% for error in form %}
+          <div class="form-group has-errors text-danger small">
+              {{error.errors}}
+          </div>
+          {% endfor %}
 
-                            {%csrf_token%}
-                            {% for error in form %}
-                            <div class="form-group has-errors text-danger small">
-                                {{error.errors}}
-                            </div>
-                            {% endfor %}
+          {% for field in form %}
+          <div class="form-group has-errors text-danger small">
+              {{field.errors}}
+          </div>
+          <div class="form-group has-errors text-danger small">
+          </div>
+          <div class="form-group">
+              {{field}}
+          </div>
+          {% endfor %}
 
-                            {% for field in form %}
-                            <div class="form-group has-errors text-danger small">
-                                {{field.errors}}
-                            </div>
-                            <div class="form-group has-errors text-danger small">
-                            </div>
-                            <div class="form-group">
-                                {{field}}
-                            </div>
-                            {% endfor %}
-
-                           <input type="submit" value="valider"/>
-                           </form>         
-                     
-                          </center> 
-                        </div>
-                       
+         <input type="submit" value="valider"/>
+         </form>         
+   
+        </center> 
+      </div>                
 </div>
-
-  
-
-
 </div>
 
 {% endblock %}
